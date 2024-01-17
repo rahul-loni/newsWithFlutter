@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:news_app/Config/Theme.dart';
 
-import 'Pages/HomePage.dart';
+import 'Pages/HomePage/HomePage.dart';
 
 void main() {
   runApp(const MyApp());
