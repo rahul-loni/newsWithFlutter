@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),
-      floatingActionButton: MyBottonNav(),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(

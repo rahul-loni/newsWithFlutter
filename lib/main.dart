@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:news_app/Config/Theme.dart';
+import 'package:news_app/HomePageController.dart';
 
+import 'Controller/BottomNavigationController.dart';
 import 'Pages/HomePage/HomePage.dart';
 
 void main() {
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       themeMode: ThemeMode.system,
       darkTheme: darkTheme,
-      home: HomePage(),
+      home: HomePageController(),
     );
   }
 }
