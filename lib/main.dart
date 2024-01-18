@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:news_app/Config/Theme.dart';
 
 import 'Pages/HomePage/HomePage.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'News App',
       theme: lightTheme,
