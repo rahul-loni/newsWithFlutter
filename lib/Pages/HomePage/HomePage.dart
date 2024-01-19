@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:news_app/Components/NavigationBar.dart';
 import 'package:news_app/Pages/HomePage/Widgets/NewsTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/TrandingCard.dart';
+import 'package:news_app/Pages/NewDetails/NewsDetails.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,17 +11,45 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "NEWSEEKERS",
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Icon(Icons.dashboard),
+                  ),
+                  Text(
+                    "NEWS APP",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.5,
+                    ),
+                  ),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Icon(Icons.person),
+                  )
+                ],
+              ),
+              SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -34,11 +64,14 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-              const SingleChildScrollView(
+              SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     TrandingCard(
+                      ontap: () {
+                        Get.to(NewsDetailsPage());
+                      },
                       imageUrl:
                           "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/317_1705413514.jpg",
                       title:
@@ -48,6 +81,9 @@ class HomePage extends StatelessWidget {
                       time: "2 Day ago",
                     ),
                     TrandingCard(
+                      ontap: () {
+                        Get.to(NewsDetailsPage());
+                      },
                       imageUrl:
                           "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/17/unknown-2024-01-17t214415187_1705508360.jpg",
                       title:
@@ -57,6 +93,9 @@ class HomePage extends StatelessWidget {
                       time: "2 Day ago",
                     ),
                     TrandingCard(
+                      ontap: () {
+                        Get.to(NewsDetailsPage());
+                      },
                       imageUrl:
                           "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/gr-10-padav-17-01-2024-1_1705417775.jpg",
                       title:
