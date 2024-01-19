@@ -52,7 +52,11 @@ class NewsTile extends StatelessWidget {
                       backgroundColor: Theme.of(context).colorScheme.primary,
                     ),
                     SizedBox(width: 10),
-                    Text("$author")
+                    Flexible(
+                        child: Text(
+                      "$author",
+                      maxLines: 1,
+                    ))
                   ],
                 ),
                 SizedBox(height: 15),

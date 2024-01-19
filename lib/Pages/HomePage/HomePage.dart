@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_app/Components/NavigationBar.dart';
+import 'package:news_app/Controller/NewsController.dart';
 import 'package:news_app/Pages/HomePage/Widgets/NewsTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/TrandingCard.dart';
 import 'package:news_app/Pages/NewDetails/NewsDetails.dart';
@@ -10,6 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NewsController newsController = Get.put(NewsController());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -38,14 +40,19 @@ class HomePage extends StatelessWidget {
                       letterSpacing: 1.5,
                     ),
                   ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      borderRadius: BorderRadius.circular(100),
+                  InkWell(
+                    onTap: () {
+                      newsController.getTrandingNews();
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Icon(Icons.person),
                     ),
-                    child: Icon(Icons.person),
                   )
                 ],
               ),
@@ -66,45 +73,25 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    TrandingCard(
-                      ontap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/317_1705413514.jpg",
-                      title:
-                          "3400 साल पहले लिखी गई आदि रामायण, इंडोनेशिया में 5 और नेपाल में 4 रामकथाएं",
-                      author: "Nitish Kumar",
-                      tag: "Tranding no 1",
-                      time: "2 Day ago",
-                    ),
-                    TrandingCard(
-                      ontap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/17/unknown-2024-01-17t214415187_1705508360.jpg",
-                      title:
-                          "वर्ल्ड कप से पहले टी-20 सीरीज में अफगानिस्तान को 3-0 से हराया",
-                      author: "Nitish Kumar",
-                      tag: "Tranding no 2",
-                      time: "2 Day ago",
-                    ),
-                    TrandingCard(
-                      ontap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/gr-10-padav-17-01-2024-1_1705417775.jpg",
-                      title:
-                          "नेपाल में मणिमंडप, नासिक में सीता गुफा, श्रीलंका में रावण का शव",
-                      author: "Nitish Kumar",
-                      tag: "Tranding no 2",
-                      time: "18 घंटे पहले",
-                    ),
-                  ],
+                child: Obx(
+                  () => Row(
+                    children: newsController.trandingNews
+                        .map(
+                          (e) => TrandingCard(
+                            ontap: () {
+                              Get.to(NewsDetailsPage(
+                                newsData: e,
+                              ));
+                            },
+                            imageUrl: e.urlToImage!,
+                            title: e.title!,
+                            author: e.author ?? "Unknown",
+                            tag: "Tranding no 1",
+                            time: e.publishedAt!,
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
               SizedBox(height: 20),
@@ -122,34 +109,126 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-              Column(
+              Obx(
+                () => newsController.isNewLoading.value
+                    ? LinearProgressIndicator()
+                    : Column(
+                        children: newsController.all5NewsList
+                            .map(
+                              (e) => NewsTile(
+                                imageUrl: e.urlToImage ??
+                                    "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
+                                title: e.title!,
+                                author: e.author ?? "Unknown",
+                                time: e.publishedAt!,
+                              ),
+                            )
+                            .toList(),
+                      ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  NewsTile(
-                    imageUrl:
-                        "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/317_1705413514.jpg",
-                    title:
-                        "3400 साल पहले लिखी गई आदि रामायण, इंडोनेशिया में 5 और नेपाल में 4 रामकथाएं",
-                    author: "Nitish Kumar",
-                    time: "2 Day ago",
+                  Text(
+                    "Tesla News",
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  NewsTile(
-                    imageUrl:
-                        "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/17/unknown-2024-01-17t214415187_1705508360.jpg",
-                    title:
-                        "वर्ल्ड कप से पहले टी-20 सीरीज में अफगानिस्तान को 3-0 से हराया",
-                    author: "Nitish Kumar",
-                    time: "2 Day ago",
-                  ),
-                  NewsTile(
-                    imageUrl:
-                        "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/gr-10-padav-17-01-2024-1_1705417775.jpg",
-                    title:
-                        "नेपाल में मणिमंडप, नासिक में सीता गुफा, श्रीलंका में रावण का शव",
-                    author: "Nitish Kumar",
-                    time: "18 घंटे पहले",
+                  Text(
+                    "See All",
+                    style: Theme.of(context).textTheme.labelSmall,
                   )
                 ],
-              )
+              ),
+              SizedBox(height: 20),
+              Obx(
+                () => newsController.isNewLoading.value
+                    ? LinearProgressIndicator()
+                    : Column(
+                        children: newsController.tesla5News
+                            .map(
+                              (e) => NewsTile(
+                                imageUrl: e.urlToImage ??
+                                    "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
+                                title: e.title!,
+                                author: e.author ?? "Unknown",
+                                time: e.publishedAt!,
+                              ),
+                            )
+                            .toList(),
+                      ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "News From US",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Text(
+                    "See All",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  )
+                ],
+              ),
+              SizedBox(height: 20),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Obx(
+                  () => Row(
+                    children: newsController.us10NewsList
+                        .map(
+                          (e) => TrandingCard(
+                            ontap: () {
+                              Get.to(NewsDetailsPage(
+                                newsData: e,
+                              ));
+                            },
+                            imageUrl: e.urlToImage ??
+                                "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
+                            title: e.title!,
+                            author: e.author ?? "Unknown",
+                            tag: "Tranding no 1",
+                            time: e.publishedAt!,
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Business News",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Text(
+                    "See All",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  )
+                ],
+              ),
+              SizedBox(height: 20),
+              Obx(
+                () => newsController.isNewLoading.value
+                    ? LinearProgressIndicator()
+                    : Column(
+                        children: newsController.business5News
+                            .map(
+                              (e) => NewsTile(
+                                imageUrl: e.urlToImage ??
+                                    "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
+                                title: e.title!,
+                                author: e.author ?? "Unknown",
+                                time: e.publishedAt!,
+                              ),
+                            )
+                            .toList(),
+                      ),
+              ),
             ],
           ),
         ),

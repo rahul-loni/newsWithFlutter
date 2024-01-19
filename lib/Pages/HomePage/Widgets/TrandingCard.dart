@@ -79,10 +79,21 @@ class TrandingCard extends StatelessWidget {
               SizedBox(width: 10),
               CircleAvatar(
                 radius: 15,
+                child: Text(
+                  "${author[0]}",
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 backgroundColor: Theme.of(context).colorScheme.primary,
               ),
               SizedBox(width: 10),
-              Text("$author")
+              Flexible(
+                  child: Text(
+                "$author",
+                maxLines: 1,
+              ))
             ],
           ),
           SizedBox(height: 10),

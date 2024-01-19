@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Models/NewsModel.dart';
+
 class NewsDetailsPage extends StatelessWidget {
-  const NewsDetailsPage({super.key});
+  final NewsModel newsData;
+  const NewsDetailsPage({super.key, required this.newsData});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +35,9 @@ class NewsDetailsPage extends StatelessWidget {
                 ),
                 SizedBox(height: 30),
                 Container(
-                  height: 330,
+                  // height: 330,
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    // color: Colors.red,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
@@ -43,7 +46,7 @@ class NewsDetailsPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
-                            "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/gr-10-padav-17-01-2024-1_1705417775.jpg",
+                            newsData.urlToImage!,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -53,7 +56,7 @@ class NewsDetailsPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "नेपाल में मणिमंडप, नासिक में सीता गुफा, श्रीलंका में रावण का शव",
+                  newsData.title!,
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -63,7 +66,7 @@ class NewsDetailsPage extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "2 day ago * Tech",
+                      "${newsData.publishedAt} * ${newsData.source!.name} ",
                       style: Theme.of(context).textTheme.labelSmall,
                     )
                   ],
@@ -73,11 +76,18 @@ class NewsDetailsPage extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 15,
+                      child: Text(
+                        "${newsData.author![0]}",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       backgroundColor: Colors.red,
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "Nitish roy",
+                      newsData.author!,
                       style: TextStyle(
                           fontSize: 18,
                           color:
@@ -90,7 +100,7 @@ class NewsDetailsPage extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        "The lorem ipsum is based on De finibus bonorum et malorum, a Latin text written by Cicero in 45 BC. Typographers and printers have used passages from this work for formatting since the 16th century.",
+                        newsData.description!,
                         style: TextStyle(
                             fontSize: 18,
                             color: Theme.of(context)
