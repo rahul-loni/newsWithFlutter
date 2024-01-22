@@ -7,8 +7,8 @@ class BottomNavController extends GetxController {
   RxInt index = 0.obs;
 
   var pages = [
-    HomePage(),
-    ArticalPage(),
-    ProfilePage(),
+    const HomePage(),
+    const ArticalPage(),
+    const ProfilePage(),
   ];
 }

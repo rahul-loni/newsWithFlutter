@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../Models/NewsModel.dart';
+import 'package:news_app/Model/NewsModel.dart';
 
 class NewsDetailsPage extends StatelessWidget {
-  final NewsModel newsData;
-  const NewsDetailsPage({super.key, required this.newsData});
+  final NewsModel news;
+  const NewsDetailsPage({super.key, required this.news});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class NewsDetailsPage extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Container(
                   // height: 330,
                   decoration: BoxDecoration(
@@ -46,7 +45,8 @@ class NewsDetailsPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
-                            newsData.urlToImage!,
+                            news.urlToImage ??
+                                "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -54,40 +54,40 @@ class NewsDetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
-                  newsData.title!,
+                  news.title!,
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     Text(
-                      "${newsData.publishedAt} * ${newsData.source!.name} ",
+                      "${news.author} * ${news.publishedAt}",
                       style: Theme.of(context).textTheme.labelSmall,
                     )
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     CircleAvatar(
                       radius: 15,
+                      backgroundColor: Colors.red,
                       child: Text(
-                        "${newsData.author![0]}",
-                        style: TextStyle(
+                        news.author![0],
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      backgroundColor: Colors.red,
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text(
-                      newsData.author!,
+                      news.author!,
                       style: TextStyle(
                           fontSize: 18,
                           color:
@@ -95,12 +95,12 @@ class NewsDetailsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     Flexible(
                       child: Text(
-                        newsData.description!,
+                        news.description ?? "No Description",
                         style: TextStyle(
                             fontSize: 18,
                             color: Theme.of(context)

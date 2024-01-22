@@ -6,7 +6,7 @@ class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).colorScheme.primaryContainer,
@@ -29,7 +29,7 @@ class SearchWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               color: Theme.of(context).colorScheme.primary,
             ),
-            child: Icon(Icons.search),
+            child: const Icon(Icons.search),
           )
         ],
       ),

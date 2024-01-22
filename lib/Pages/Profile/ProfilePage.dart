@@ -7,9 +7,9 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Page"),
+        title: const Text("Profile Page"),
       ),
-      body: Column(
+      body: const Column(
         children: [],
       ),
     );

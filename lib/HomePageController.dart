@@ -10,9 +10,9 @@ class HomePageController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BottomNavController controller = Get.put(BottomNavController());
-    
+
     return Scaffold(
-      floatingActionButton: MyBottonNav(),
+      floatingActionButton: const MyBottonNav(),
       body: Obx(
         () => controller.pages[controller.index.value],
       ),

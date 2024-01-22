@@ -21,8 +21,8 @@ class TrandingCard extends StatelessWidget {
     return InkWell(
       onTap: ontap,
       child: Container(
-        margin: EdgeInsets.only(right: 10),
-        padding: EdgeInsets.all(5),
+        margin: const EdgeInsets.only(right: 10),
+        padding: const EdgeInsets.all(5),
         // height: 300,
         width: 280,
         decoration: BoxDecoration(
@@ -44,21 +44,21 @@ class TrandingCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "$tag",
+                tag,
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               Text(
-                "$time",
+                time,
                 style: Theme.of(context).textTheme.labelSmall,
               ),
             ],
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -66,37 +66,37 @@ class TrandingCard extends StatelessWidget {
                 child: Text(
                   title,
                   maxLines: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               CircleAvatar(
                 radius: 15,
+                backgroundColor: Theme.of(context).colorScheme.primary,
                 child: Text(
-                  "${author[0]}",
-                  style: TextStyle(
+                  author[0],
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                backgroundColor: Theme.of(context).colorScheme.primary,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Flexible(
                   child: Text(
-                "$author",
+                author,
                 maxLines: 1,
               ))
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
         ]),
       ),
     );

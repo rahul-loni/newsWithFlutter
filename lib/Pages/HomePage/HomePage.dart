@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news_app/Components/NavigationBar.dart';
 import 'package:news_app/Controller/NewsController.dart';
 import 'package:news_app/Pages/HomePage/Widgets/NewsTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/TrandingCard.dart';
@@ -18,7 +17,7 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -29,9 +28,9 @@ class HomePage extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primaryContainer,
                       borderRadius: BorderRadius.circular(100),
                     ),
-                    child: Icon(Icons.dashboard),
+                    child: const Icon(Icons.dashboard),
                   ),
-                  Text(
+                  const Text(
                     "NEWS APP",
                     style: TextStyle(
                       fontSize: 25,
@@ -42,7 +41,7 @@ class HomePage extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      newsController.getTrandingNews();
+                      newsController.getNewsForYou();
                     },
                     child: Container(
                       width: 50,
@@ -51,12 +50,12 @@ class HomePage extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primaryContainer,
                         borderRadius: BorderRadius.circular(100),
                       ),
-                      child: Icon(Icons.person),
+                      child: const Icon(Icons.person),
                     ),
                   )
                 ],
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -70,31 +69,30 @@ class HomePage extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Obx(
-                  () => Row(
-                    children: newsController.trandingNews
-                        .map(
-                          (e) => TrandingCard(
-                            ontap: () {
-                              Get.to(NewsDetailsPage(
-                                newsData: e,
-                              ));
-                            },
-                            imageUrl: e.urlToImage!,
-                            title: e.title!,
-                            author: e.author ?? "Unknown",
-                            tag: "Tranding no 1",
-                            time: e.publishedAt!,
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
+                  scrollDirection: Axis.horizontal,
+                  child: Obx(
+                    () => Row(
+                      children: newsController.trandingNewsList
+                          .map(
+                            (e) => TrandingCard(
+                              ontap: () {
+                                Get.to(NewsDetailsPage(
+                                  news: e,
+                                ));
+                              },
+                              imageUrl: e.urlToImage!,
+                              title: e.title!,
+                              author: e.author ?? "Unknown",
+                              tag: "Tranding no 1",
+                              time: e.publishedAt!,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  )),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -108,127 +106,26 @@ class HomePage extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Obx(
-                () => newsController.isNewLoading.value
-                    ? LinearProgressIndicator()
-                    : Column(
-                        children: newsController.all5NewsList
-                            .map(
-                              (e) => NewsTile(
-                                imageUrl: e.urlToImage ??
-                                    "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
-                                title: e.title!,
-                                author: e.author ?? "Unknown",
-                                time: e.publishedAt!,
-                              ),
-                            )
-                            .toList(),
-                      ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Tesla News",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
-                  )
-                ],
-              ),
-              SizedBox(height: 20),
-              Obx(
-                () => newsController.isNewLoading.value
-                    ? LinearProgressIndicator()
-                    : Column(
-                        children: newsController.tesla5News
-                            .map(
-                              (e) => NewsTile(
-                                imageUrl: e.urlToImage ??
-                                    "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
-                                title: e.title!,
-                                author: e.author ?? "Unknown",
-                                time: e.publishedAt!,
-                              ),
-                            )
-                            .toList(),
-                      ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "News From US",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
-                  )
-                ],
-              ),
-              SizedBox(height: 20),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Obx(
-                  () => Row(
-                    children: newsController.us10NewsList
-                        .map(
-                          (e) => TrandingCard(
-                            ontap: () {
-                              Get.to(NewsDetailsPage(
-                                newsData: e,
-                              ));
-                            },
-                            imageUrl: e.urlToImage ??
-                                "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
-                            title: e.title!,
-                            author: e.author ?? "Unknown",
-                            tag: "Tranding no 1",
-                            time: e.publishedAt!,
-                          ),
-                        )
-                        .toList(),
-                  ),
+                () => Column(
+                  children: newsController.newsForYouList
+                      .map(
+                        (e) => NewsTile(
+                          ontap: () {
+                            Get.to(NewsDetailsPage(news: e));
+                          },
+                          imageUrl: e.urlToImage ??
+                              "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
+                          title: e.title!,
+                          author: e.author ?? "Unknown",
+                          time: e.publishedAt!,
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Business News",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
-                  )
-                ],
-              ),
-              SizedBox(height: 20),
-              Obx(
-                () => newsController.isNewLoading.value
-                    ? LinearProgressIndicator()
-                    : Column(
-                        children: newsController.business5News
-                            .map(
-                              (e) => NewsTile(
-                                imageUrl: e.urlToImage ??
-                                    "https://static.toiimg.com/thumb/msid-46918916,width=1200,height=900/46918916.jpg",
-                                title: e.title!,
-                                author: e.author ?? "Unknown",
-                                time: e.publishedAt!,
-                              ),
-                            )
-                            .toList(),
-                      ),
-              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

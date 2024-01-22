@@ -12,7 +12,7 @@ class MyBottonNav extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           width: 200,
           height: 60,
           decoration: BoxDecoration(
@@ -27,11 +27,11 @@ class MyBottonNav extends StatelessWidget {
                 },
                 child: Obx(
                   () => AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.bounceInOut,
                     width: 40,
                     height: 40,
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       color: controller.index.value == 0
                           ? Theme.of(context).colorScheme.primary
@@ -56,11 +56,11 @@ class MyBottonNav extends StatelessWidget {
                   },
                   child: Obx(
                     () => AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.bounceInOut,
                       width: 40,
                       height: 40,
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         color: controller.index.value == 1
                             ? Theme.of(context).colorScheme.primary
@@ -86,11 +86,11 @@ class MyBottonNav extends StatelessWidget {
                   },
                   child: Obx(
                     () => AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.bounceInOut,
                       width: 40,
                       height: 40,
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         color: controller.index.value == 2
                             ? Theme.of(context).colorScheme.primary

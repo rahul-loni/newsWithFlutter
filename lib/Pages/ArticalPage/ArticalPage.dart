@@ -11,14 +11,15 @@ class ArticalPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: ListView(
-            children: const [
+            children: [
               SearchWidget(),
               SizedBox(height: 20),
               Column(
                 children: [
                   NewsTile(
+                    ontap: () {},
                     imageUrl:
                         "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/317_1705413514.jpg",
                     title:
@@ -27,6 +28,7 @@ class ArticalPage extends StatelessWidget {
                     time: "2 Day ago",
                   ),
                   NewsTile(
+                    ontap: () {},
                     imageUrl:
                         "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/17/unknown-2024-01-17t214415187_1705508360.jpg",
                     title:
@@ -35,6 +37,7 @@ class ArticalPage extends StatelessWidget {
                     time: "2 Day ago",
                   ),
                   NewsTile(
+                    ontap: () {},
                     imageUrl:
                         "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/gr-10-padav-17-01-2024-1_1705417775.jpg",
                     title:
@@ -43,6 +46,7 @@ class ArticalPage extends StatelessWidget {
                     time: "18 घंटे पहले",
                   ),
                   NewsTile(
+                    ontap: () {},
                     imageUrl:
                         "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/17/unknown-2024-01-17t214415187_1705508360.jpg",
                     title:
@@ -51,6 +55,7 @@ class ArticalPage extends StatelessWidget {
                     time: "2 Day ago",
                   ),
                   NewsTile(
+                    ontap: () {},
                     imageUrl:
                         "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/gr-10-padav-17-01-2024-1_1705417775.jpg",
                     title:
