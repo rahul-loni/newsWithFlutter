@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       darkTheme: darkTheme,
       home: const HomePageController(),
-      // home: DemoPage(),
     );
   }
 }

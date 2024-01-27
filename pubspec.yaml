@@ -39,6 +39,8 @@ dependencies:
   get: ^4.6.6
   http: ^1.2.0
   shimmer: ^3.0.0
+  flutter_tts: ^3.8.5
+  lottie: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +72,7 @@ flutter:
     - Assets/Photos/
     - Assets/Icons/FoodIcon/
     - Assets/Icons/PyementMode/
+    - Assets/Animation/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

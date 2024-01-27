@@ -20,21 +20,23 @@ class ArticalPage extends StatelessWidget {
             children: [
               SearchWidget(),
               SizedBox(height: 20),
-              Column(
-                children: newsController.newsForYouList
-                    .map(
-                      (e) => NewsTile(
-                        ontap: () {
-                          Get.to(NewsDetailsPage(news: e));
-                        },
-                        imageUrl: e.urlToImage ??
-                            "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/317_1705413514.jpg",
-                        title: e.title!,
-                        author: e.author ?? "Unknown",
-                        time: e.publishedAt!,
-                      ),
-                    )
-                    .toList(),
+              Obx(
+                () => Column(
+                  children: newsController.newsForYouList
+                      .map(
+                        (e) => NewsTile(
+                          ontap: () {
+                            Get.to(NewsDetailsPage(news: e));
+                          },
+                          imageUrl: e.urlToImage ??
+                              "https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2024/01/16/317_1705413514.jpg",
+                          title: e.title!,
+                          author: e.author ?? "Unknown",
+                          time: e.publishedAt!,
+                        ),
+                      )
+                      .toList(),
+                ),
               )
             ],
           ),

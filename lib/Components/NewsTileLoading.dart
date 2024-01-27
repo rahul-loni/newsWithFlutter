@@ -24,7 +24,7 @@ class NewsTileLoading extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    LoadingContainer(
+                    const LoadingContainer(
                       width: 30,
                       hight: 30,
                     ),
