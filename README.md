@@ -3,6 +3,8 @@
 
 🚀 Exciting News App Development Journey Begins Today! 🌟 Join us on this thrilling Flutter adventure as we kick off our special playlist dedicated to creating a top-notch News App using Flutter, GetX, and a fantastic free public API! 📰📱
 
+Watch On Youtube <a href="https://www.youtube.com/watch?v=cgHD8X0et_c&list=PLe9ZTrJrS7SmuP1fnPs6X8DjyGPh_NZA0&ab_channel=Flutterhero"> Youtube Video 📰 </a>
+
 ![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvkIsxdcEtyIJMm0XTMW4KJrkjUIpGdWanwyE7Upp5LfCYNg4NZcVBVJ9nlr2IGbTTsUFJXRXVzoQRee4bChl7gxWZsgpqd8PxF0cLfxfnHR4bSpnomuVIeCzD30Keh4JqlhRw9yYyAnQsBvOriVi5mfQkAaVUfC8WYuMKZfar3N7NOIyZjetkg4S6QzMp/s3889/cover.png)
 
 In this playlist, we'll guide you through the step-by-step process of building a feature-rich News App in Flutter, making it an absolute breeze with the power of GetX and a seamless API integration. 🚀💻
