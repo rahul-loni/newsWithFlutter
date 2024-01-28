@@ -9,7 +9,7 @@ Watch On Youtube <a href="https://www.youtube.com/watch?v=cgHD8X0et_c&list=PLe9Z
 
 In this playlist, we'll guide you through the step-by-step process of building a feature-rich News App in Flutter, making it an absolute breeze with the power of GetX and a seamless API integration. 🚀💻
 
-<a href=""> ![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8VHjsFs7OFZNltdExCG3nUW-nkhP6fWO7Ojgn-8ovZmu4jYb3JSxcckMtumkd0CNiA4KiXa8qJtMcre3xMhhPUzKvXl60c8KJ6oLuTYl-SMW4y3mQ8gFVFDDqoVic6-HjQ8KchNyfP00woGlbWcMamcLOa3HMmkUEUJMwDtKoT1XNHg3QgG5qqaeAlsSX/s885/Download.png) </a>
+<a href="https://github.com/MrNitishroy/News-App-In-Flutter-With-API/releases/download/1.0.0/News.App.apk"> ![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8VHjsFs7OFZNltdExCG3nUW-nkhP6fWO7Ojgn-8ovZmu4jYb3JSxcckMtumkd0CNiA4KiXa8qJtMcre3xMhhPUzKvXl60c8KJ6oLuTYl-SMW4y3mQ8gFVFDDqoVic6-HjQ8KchNyfP00woGlbWcMamcLOa3HMmkUEUJMwDtKoT1XNHg3QgG5qqaeAlsSX/s885/Download.png) </a>
 
 🌐 Learn how to fetch real-time news data from the best news API, ensuring your app stays up-to-date and dynamic! 📊💡
 
